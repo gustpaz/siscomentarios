@@ -1,0 +1,147 @@
+2024-11-21 13:20:49 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-21 13:21:42 - INFO - Navegador iniciado com sucesso
+2024-11-21 13:21:42 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-21 13:22:12 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-21 13:22:41 - INFO - Iniciando processo para perfil: luanapaz788
+2024-11-21 13:23:06 - INFO - Navegador fechado com sucesso
+2024-11-21 13:28:47 - INFO - Navegador iniciado com sucesso
+2024-11-21 13:28:47 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-21 13:29:14 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-21 13:29:40 - INFO - Navegador fechado com sucesso
+2024-11-21 15:42:09 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-21 15:43:02 - ERROR - Erro ao carregar página inicial: Could not build url for endpoint 'logout'. Did you mean 'login' instead?
+Traceback (most recent call last):
+  File "C:\Users\ggpaz\Desktop\tiktok comentarios\comentens novo - 05.11 - sistema de login - funcional- layout novo - cookies - tratamentos de erros -  teste aumento de velocidade\app.py", line 357, in index
+    return render_template('index.html', profiles=profiles, comments=comments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\ggpaz\Desktop\tiktok comentarios\comentens novo - 05.11 - sistema de login - funcional- layout novo - cookies - tratamentos de erros -  teste aumento de velocidade\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\ggpaz\Desktop\tiktok comentarios\comentens novo - 05.11 - sistema de login - funcional- layout novo - cookies - tratamentos de erros -  teste aumento de velocidade\templates\base.html", line 18, in top-level template code
+    <a href="{{ url_for('logout') }}" class="btn">Sair</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'logout'. Did you mean 'login' instead?
+
+2024-11-21 15:43:02 - ERROR - Erro ao verificar licença: Could not build url for endpoint 'logout'. Did you mean 'login' instead?
+2024-11-21 15:43:40 - ERROR - Erro ao carregar página inicial: Could not build url for endpoint 'logout'. Did you mean 'login' instead?
+Traceback (most recent call last):
+  File "C:\Users\ggpaz\Desktop\tiktok comentarios\comentens novo - 05.11 - sistema de login - funcional- layout novo - cookies - tratamentos de erros -  teste aumento de velocidade\app.py", line 357, in index
+    return render_template('index.html', profiles=profiles, comments=comments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\ggpaz\Desktop\tiktok comentarios\comentens novo - 05.11 - sistema de login - funcional- layout novo - cookies - tratamentos de erros -  teste aumento de velocidade\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\ggpaz\Desktop\tiktok comentarios\comentens novo - 05.11 - sistema de login - funcional- layout novo - cookies - tratamentos de erros -  teste aumento de velocidade\templates\base.html", line 18, in top-level template code
+    <a href="{{ url_for('logout') }}" class="btn">Sair</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'logout'. Did you mean 'login' instead?
+
+2024-11-21 15:43:40 - ERROR - Erro ao verificar licença: Could not build url for endpoint 'logout'. Did you mean 'login' instead?
+2024-11-21 15:49:04 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-21 15:50:15 - ERROR - Erro na instância do Chrome: [WinError 183] Não é possível criar um arquivo já existente: 'C:\\Users\\ggpaz\\appdata\\roaming\\undetected_chromedriver\\undetected\\chromedriver-win32\\chromedriver.exe' -> 'C:\\Users\\ggpaz\\appdata\\roaming\\undetected_chromedriver\\undetected_chromedriver.exe'
+2024-11-21 15:50:15 - INFO - Nova instância do Chrome iniciada para processar 1 comentários
+2024-11-21 15:50:15 - INFO - Processando comentário para perfil: manuelabrenda1452
+2024-11-21 15:50:47 - INFO - Comentário enviado com sucesso para o perfil manuelabrenda1452
+2024-11-21 15:50:48 - INFO - Instância do Chrome fechada com sucesso
+2024-11-21 16:20:27 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-21 16:20:58 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-21 16:20:58 - INFO - Processando comentário para perfil: manuelabrenda1452
+2024-11-21 16:20:58 - INFO - Nova instância do Chrome 1 iniciada para processar 1 comentários
+2024-11-21 16:20:58 - INFO - Processando comentário para perfil: barbaralima1020
+2024-11-21 16:21:33 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-21 16:21:34 - INFO - Comentário enviado com sucesso para o perfil barbaralima1020
+2024-11-21 16:21:34 - INFO - Instância do Chrome 1 fechada com sucesso
+2024-11-21 16:21:34 - ERROR - Erro ao remover diretório temporário da instância 1: [WinError 32] O arquivo já está sendo usado por outro processo: 'C:\\Users\\ggpaz\\AppData\\Local\\Temp\\chrome_instance_1_mtu528tn\\Default\\Affiliation Database'
+2024-11-21 16:21:41 - INFO - Comentário enviado com sucesso para o perfil manuelabrenda1452
+2024-11-21 16:21:41 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-21 16:21:41 - ERROR - Erro ao remover diretório temporário da instância 0: [WinError 32] O arquivo já está sendo usado por outro processo: 'C:\\Users\\ggpaz\\AppData\\Local\\Temp\\chrome_instance_0_3c5xz96j\\Default\\Affiliation Database'
+2024-11-21 16:52:01 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-21 16:52:54 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-21 16:52:54 - INFO - Processando comentário para perfil: barbaralima1020
+2024-11-21 16:52:55 - INFO - Nova instância do Chrome 1 iniciada para processar 1 comentários
+2024-11-21 16:52:55 - INFO - Processando comentário para perfil: luanapaz788
+2024-11-21 16:53:22 - INFO - Comentário enviado com sucesso para o perfil barbaralima1020
+2024-11-21 16:53:22 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-21 16:53:25 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-21 16:53:26 - INFO - Comentário enviado com sucesso para o perfil luanapaz788
+2024-11-21 16:53:26 - INFO - Instância do Chrome 1 fechada com sucesso
+2024-11-21 16:53:29 - INFO - Diretório temporário da instância 1 removido com sucesso na tentativa 1
+2024-11-21 16:55:49 - INFO - Nova instância do Chrome 1 iniciada para processar 1 comentários
+2024-11-21 16:55:49 - INFO - Processando comentário para perfil: barbaralima1020
+2024-11-21 16:55:49 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-21 16:55:49 - INFO - Processando comentário para perfil: manuelabrenda1452
+2024-11-21 16:56:23 - INFO - Comentário enviado com sucesso para o perfil manuelabrenda1452
+2024-11-21 16:56:23 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-21 16:56:24 - INFO - Comentário enviado com sucesso para o perfil barbaralima1020
+2024-11-21 16:56:24 - INFO - Instância do Chrome 1 fechada com sucesso
+2024-11-21 16:56:26 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-21 16:56:26 - INFO - Diretório temporário da instância 1 removido com sucesso na tentativa 1
+2024-11-21 16:58:01 - DEBUG - Iniciando processamento de cookies
+2024-11-21 16:58:01 - INFO - Processados 22 cookies com sucesso
+2024-11-21 16:58:01 - INFO - Perfil 'leticia luana' adicionado com sucesso
+2024-11-21 16:58:47 - DEBUG - Iniciando processamento de cookies
+2024-11-21 16:58:47 - INFO - Processados 22 cookies com sucesso
+2024-11-21 16:58:47 - INFO - Perfil 'juana bela' adicionado com sucesso
+2024-11-21 16:59:14 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-21 16:59:14 - INFO - Processando comentário para perfil: manulima1020
+2024-11-21 16:59:15 - INFO - Nova instância do Chrome 1 iniciada para processar 1 comentários
+2024-11-21 16:59:15 - INFO - Processando comentário para perfil: manuelabrenda1452
+2024-11-21 16:59:19 - INFO - Nova instância do Chrome 2 iniciada para processar 1 comentários
+2024-11-21 16:59:19 - INFO - Processando comentário para perfil: barbaralima1020
+2024-11-21 16:59:54 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-21 16:59:58 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-21 17:00:00 - INFO - Comentário enviado com sucesso para o perfil manuelabrenda1452
+2024-11-21 17:00:00 - INFO - Instância do Chrome 1 fechada com sucesso
+2024-11-21 17:00:01 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-21 17:00:01 - INFO - Comentário enviado com sucesso para o perfil barbaralima1020
+2024-11-21 17:00:01 - INFO - Instância do Chrome 2 fechada com sucesso
+2024-11-21 17:00:02 - INFO - Diretório temporário da instância 1 removido com sucesso na tentativa 1
+2024-11-21 17:00:03 - INFO - Diretório temporário da instância 2 removido com sucesso na tentativa 1
+2024-11-21 17:00:06 - INFO - Comentário enviado com sucesso para o perfil manulima1020
+2024-11-21 17:00:06 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-21 17:00:08 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-21 17:00:10 - INFO - Nova instância do Chrome 3 iniciada para processar 1 comentários
+2024-11-21 17:00:10 - INFO - Processando comentário para perfil: luanapaz788
+2024-11-21 17:00:12 - INFO - Nova instância do Chrome 4 iniciada para processar 1 comentários
+2024-11-21 17:00:12 - INFO - Processando comentário para perfil: CommentTikPro
+2024-11-21 17:00:42 - INFO - Comentário enviado com sucesso para o perfil CommentTikPro
+2024-11-21 17:00:42 - INFO - Instância do Chrome 4 fechada com sucesso
+2024-11-21 17:00:44 - INFO - Comentário enviado com sucesso para o perfil luanapaz788
+2024-11-21 17:00:44 - INFO - Instância do Chrome 3 fechada com sucesso
+2024-11-21 17:00:44 - INFO - Diretório temporário da instância 4 removido com sucesso na tentativa 1
+2024-11-21 17:00:46 - INFO - Diretório temporário da instância 3 removido com sucesso na tentativa 1
+2024-11-21 17:17:10 - INFO - Iniciando processo de encerramento do servidor

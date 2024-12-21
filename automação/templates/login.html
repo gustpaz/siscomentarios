@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Login - CommenttikPro{% endblock %}
+
+{% block content %}
+<div class="flex min-h-[80vh] items-center justify-center">
+    <div class="card w-full max-w-md">
+        <h1 class="text-2xl font-bold text-center mb-8">Acesso ao Sistema</h1>
+        
+        <form action="{{ url_for('login') }}" method="POST">
+            <div class="form-group">
+                <label for="email" class="block mb-2">Email</label>
+                <input type="email" id="email" name="email" required 
+                       class="form-control" placeholder="Seu email">
+            </div>
+            
+            <div class="form-group">
+                <label for="senha" class="block mb-2">Senha</label>
+                <input type="password" id="senha" name="senha" required 
+                       class="form-control" placeholder="Sua senha">
+            </div>
+
+            <button type="submit" class="btn w-full">
+                Entrar
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="fixed bottom-6 left-6">
+    <div class="bg-yellow-50 border border-yellow-100 rounded-md p-4 mb-4 max-w-sm">
+        <p class="text-yellow-800 text-sm flex items-center">
+            <i data-lucide="alert-triangle" class="w-4 h-4 mr-2"></i>
+            Lembre-se de encerrar o servidor quando terminar de usar o sistema
+        </p>
+    </div>
+    <button onclick="handleEncerramento()" class="btn btn-secondary">
+        <i data-lucide="power" class="w-4 h-4 inline-block mr-2"></i>
+        Encerrar Servidor
+    </button>
+</div>
+{% endblock %}

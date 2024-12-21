@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block title %}CommenttikPro{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='index_styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Criar Nova Pasta -->
+    <div class="card">
+        <div class="card-header">
+            <h5><i data-lucide="folder-plus" class="inline-block mr-2"></i>Criar Nova Pasta</h5>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('create_folder') }}" method="post">
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" name="folder_name" placeholder="Nome da pasta" required>
+                </div>
+                <div class="form-group mb-3">
+                    <select class="form-select" name="folder_type" required>
+                        <option value="profiles">Perfis</option>
+                        <option value="comments">Comentários</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-tiktok">
+                    <i data-lucide="plus-circle" class="inline-block mr-1"></i>
+                    Criar Pasta
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Adicionar Perfil -->
+    <div class="card">
+        <div class="card-header">
+            <h5><i data-lucide="user-plus" class="inline-block mr-2"></i>Adicionar Perfil</h5>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('add_profile') }}" method="post">
+                <div class="form-group mb-3">
+                    <select class="form-select" name="folder" required>
+                        {% for folder in profile_folders %}
+                        <option value="{{ folder }}" {% if folder == selected_profile_folder %}selected{% endif %}>{{ folder }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" name="name" placeholder="Nome do perfil" required>
+                </div>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" name="cookies" rows="3" placeholder="Cole os cookies aqui" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-tiktok">
+                    <i data-lucide="user-plus" class="inline-block mr-1"></i>
+                    Adicionar Perfil
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Adicionar Comentário -->
+    <div class="card">
+        <div class="card-header">
+            <h5><i data-lucide="message-square-plus" class="inline-block mr-2"></i>Adicionar Comentário</h5>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('add_comment') }}" method="post">
+                <div class="form-group mb-3">
+                    <select class="form-select" name="folder" required>
+                        {% for folder in comment_folders %}
+                        <option value="{{ folder }}" {% if folder == selected_comment_folder %}selected{% endif %}>{{ folder }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" name="comment" rows="3" placeholder="Digite seu comentário" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-tiktok">
+                    <i data-lucide="message-square-plus" class="inline-block mr-1"></i>
+                    Adicionar Comentário
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Comentar em Vídeo -->
+    <div class="card">
+        <div class="card-header">
+            <h5><i data-lucide="message-circle" class="inline-block mr-2"></i>Comentar em Vídeo</h5>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('comment') }}" method="post" id="commentForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Pasta de Perfis:</label>
+                            <select class="form-select" name="profile_folder" id="profileFolderSelect">
+                                {% for folder in profile_folders %}
+                                <option value="{{ folder }}" {% if folder == selected_profile_folder %}selected{% endif %}>{{ folder }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Pasta de Comentários:</label>
+                            <select class="form-select" name="comment_folder" id="commentFolderSelect">
+                                {% for folder in comment_folders %}
+                                <option value="{{ folder }}" {% if folder == selected_comment_folder %}selected{% endif %}>{{ folder }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="form-label">URL do Vídeo:</label>
+                    <input type="text" class="form-control" name="video_url" placeholder="Cole o link do vídeo aqui" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="form-label">Número de Instâncias:</label>
+                    <select class="form-select" name="num_instances" id="instanceSelect">
+                        <option value="1">1 instância</option>
+                        <option value="2">2 instâncias</option>
+                        <option value="3">3 instâncias</option>
+                        <option value="4">4 instâncias</option>
+                        <option value="5">5 instâncias</option>
+                    </select>
+                    <small class="form-text text-muted">
+                        Recomendado: 1 instância para cada 2 perfis
+                    </small>
+                </div>
+
+                <!-- Lista de Perfis -->
+                <div class="form-group mb-4">
+                    <label class="form-label">Selecione os Perfis:</label>
+                    <div class="search-container">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" class="search-input" id="profileSearch" placeholder="Buscar perfis...">
+                    </div>
+                    <div class="checkbox-grid">
+                    {% if profiles %}
+                        {% for profile in profiles %}
+                        <div class="checkbox-label profile-checkbox-container">
+                            <input type="checkbox" name="profiles" value="{{ profile.name }}" 
+                                   id="profile{{ loop.index }}" class="profile-checkbox">
+                            <label for="profile{{ loop.index }}">{{ profile.name }}</label>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted">Nenhum perfil disponível.</p>
+                    {% endif %}
+                    </div>
+                </div>
+
+                <!-- Lista de Comentários -->
+                <div class="form-group mb-4">
+                    <label class="form-label">Selecione os Comentários:</label>
+                    <div class="search-container">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" class="search-input" id="commentSearch" placeholder="Buscar comentários...">
+                    </div>
+                    <div class="checkbox-grid">
+                    {% if comments %}
+                        {% for comment in comments %}
+                        <div class="checkbox-label comment-checkbox-container">
+                            <input type="checkbox" name="comments" value="{{ comment }}" 
+                                   id="comment{{ loop.index }}" class="comment-checkbox">
+                            <label for="comment{{ loop.index }}">
+                                {{ comment[:50] }}{% if comment|length > 50 %}...{% endif %}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted">Nenhum comentário disponível.</p>
+                    {% endif %}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-tiktok">
+                    <i data-lucide="send" class="inline-block mr-1"></i>
+                    Comentar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <a href="{{ url_for('edit_remove') }}" class="btn btn-tiktok-secondary">
+            <i data-lucide="edit" class="inline-block mr-1"></i>
+            Editar/Remover Itens
+        </a>
+        <button onclick="handleLogout()" class="btn btn-tiktok">
+            <i data-lucide="log-out" class="inline-block mr-1"></i>
+            Sair
+        </button>
+        <button onclick="handleEncerramento()" class="btn btn-tiktok-secondary">
+            <i data-lucide="power" class="inline-block mr-1"></i>
+            Encerrar
+        </button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='counter.js') }}"></script>
+<script>
+document.getElementById('profileFolderSelect').addEventListener('change', function() {
+    window.location.href = '{{ url_for("index") }}?profile_folder=' + this.value + 
+                          '&comment_folder=' + document.getElementById('commentFolderSelect').value;
+});
+
+document.getElementById('commentFolderSelect').addEventListener('change', function() {
+    window.location.href = '{{ url_for("index") }}?profile_folder=' + 
+                          document.getElementById('profileFolderSelect').value + 
+                          '&comment_folder=' + this.value;
+});
+
+// Validação do formulário
+document.getElementById('commentForm').addEventListener('submit', function(e) {
+    const selectedProfiles = document.querySelectorAll('input[name="profiles"]:checked').length;
+    const selectedComments = document.querySelectorAll('input[name="comments"]:checked').length;
+
+    if (selectedProfiles === 0 || selectedComments === 0) {
+        e.preventDefault();
+        alert('Por favor, selecione pelo menos um perfil e um comentário.');
+        return;
+    }
+
+    if (selectedProfiles !== selectedComments) {
+        e.preventDefault();
+        alert('O número de perfis e comentários selecionados deve ser igual.');
+        return;
+    }
+});
+
+// Atualiza os ícones do Lucide após carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    lucide.createIcons();
+});
+</script>
+{% endblock %}

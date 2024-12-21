@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block title %}Editar/Remover - CommenttikPro{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='edit_remove_styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="edit-remove-container">
+    <!-- Removido apenas o bloco de mensagens flash duplicado -->
+
+    <h2 class="mb-4">Gerenciar Pastas e Itens</h2>
+
+    <!-- Seção de Gerenciamento de Pastas -->
+    <div class="section-card">
+        <div class="section-header">
+            <h5>Gerenciar Pastas</h5>
+        </div>
+        <div class="section-body">
+            <form action="{{ url_for('remove_folder') }}" method="post">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Selecionar Pasta:</label>
+                            <select class="form-select" name="folder_name" required>
+                                <option value="">Escolha uma pasta</option>
+                                {% for folder in profile_folders %}
+                                    {% if folder != 'default' %}
+                                    <option value="{{ folder }}">Perfis - {{ folder }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                                {% for folder in comment_folders %}
+                                    {% if folder != 'default' %}
+                                    <option value="{{ folder }}">Comentários - {{ folder }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Tipo:</label>
+                            <select class="form-select" name="folder_type" required>
+                                <option value="">Selecione o tipo</option>
+                                <option value="profiles">Perfis</option>
+                                <option value="comments">Comentários</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-tiktok w-100" onclick="return confirm('Tem certeza que deseja remover esta pasta?')">
+                            <i data-lucide="trash-2"></i> Remover Pasta
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Seção de Perfis -->
+    <div class="section-card">
+        <div class="section-header">
+            <h5>Gerenciar Perfis</h5>
+            <select class="form-select" id="profileFolderSelect" name="profile_folder">
+                {% for folder in profile_folders %}
+                <option value="{{ folder }}" {% if folder == selected_profile_folder %}selected{% endif %}>
+                    {{ folder }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="section-body">
+            {% if profiles %}
+                <div class="scrollable-content">
+                    <div class="grid-layout">
+                        {% for profile in profiles %}
+                        <div class="item-box">
+                            <input type="checkbox" class="profile-checkbox" 
+                                   id="profile_{{ loop.index }}" value="{{ profile.name }}">
+                            <label for="profile_{{ loop.index }}">{{ profile.name }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="actions-bar">
+                    <form action="{{ url_for('remove') }}" method="post" class="d-inline">
+                        <input type="hidden" name="profile_folder" value="{{ selected_profile_folder }}">
+                        <button type="submit" class="btn btn-tiktok" onclick="return copySelectedProfiles(this.form, 'remove_profiles')">
+                            <i data-lucide="trash-2"></i> Remover Selecionados
+                        </button>
+                    </form>
+
+                    <form action="{{ url_for('move_to_folder') }}" method="post" class="d-inline flex-grow-1">
+                        <input type="hidden" name="source_folder" value="{{ selected_profile_folder }}">
+                        <input type="hidden" name="item_type" value="profiles">
+                        <div class="input-group">
+                            <select class="form-select" name="target_folder" required>
+                                <option value="">Mover para...</option>
+                                {% for folder in profile_folders %}
+                                    {% if folder != selected_profile_folder %}
+                                    <option value="{{ folder }}">{{ folder }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-tiktok" onclick="return copySelectedProfiles(this.form, 'items[]')">
+                                <i data-lucide="move"></i> Mover
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="scrollable-content">
+                    <div class="accordion" id="profilesAccordion">
+                        {% for profile in profiles %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" 
+                                        data-bs-toggle="collapse" data-bs-target="#profile{{ loop.index }}">
+                                    {{ profile.name }}
+                                </button>
+                            </h2>
+                            <div id="profile{{ loop.index }}" class="accordion-collapse collapse" 
+                                 data-bs-parent="#profilesAccordion">
+                                <div class="accordion-body">
+                                    <form action="{{ url_for('edit_profile') }}" method="post">
+                                        <input type="hidden" name="folder" value="{{ selected_profile_folder }}">
+                                        <input type="hidden" name="old_name" value="{{ profile.name }}">
+                                        <div class="mb-3">
+                                            <label class="form-label">Nome do Perfil:</label>
+                                            <input type="text" class="form-control" name="new_name" 
+                                                   value="{{ profile.name }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Cookies:</label>
+                                            <textarea class="form-control" name="new_cookies" rows="3" 
+                                                      required>{{ profile.cookies | tojson }}</textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-tiktok">
+                                            <i data-lucide="save"></i> Salvar Alterações
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-muted">Nenhum perfil disponível nesta pasta.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Seção de Comentários -->
+    <div class="section-card">
+        <div class="section-header">
+            <h5>Gerenciar Comentários</h5>
+            <select class="form-select" id="commentFolderSelect" name="comment_folder">
+                {% for folder in comment_folders %}
+                <option value="{{ folder }}" {% if folder == selected_comment_folder %}selected{% endif %}>
+                    {{ folder }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="section-body">
+            {% if comments %}
+                <div class="scrollable-content">
+                    <div class="grid-layout">
+                        {% for comment in comments %}
+                        <div class="item-box">
+                            <input type="checkbox" class="comment-checkbox" 
+                                   id="comment_{{ loop.index }}" value="{{ comment }}">
+                            <label for="comment_{{ loop.index }}">
+                                {{ comment[:50] }}{% if comment|length > 50 %}...{% endif %}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="actions-bar">
+                    <form action="{{ url_for('remove') }}" method="post" class="d-inline">
+                        <input type="hidden" name="comment_folder" value="{{ selected_comment_folder }}">
+                        <button type="submit" class="btn btn-tiktok" onclick="return copySelectedComments(this.form, 'remove_comments')">
+                            <i data-lucide="trash-2"></i> Remover Selecionados
+                        </button>
+                    </form>
+
+                    <form action="{{ url_for('move_to_folder') }}" method="post" class="d-inline flex-grow-1">
+                        <input type="hidden" name="source_folder" value="{{ selected_comment_folder }}">
+                        <input type="hidden" name="item_type" value="comments">
+                        <div class="input-group">
+                            <select class="form-select" name="target_folder" required>
+                                <option value="">Mover para...</option>
+                                {% for folder in comment_folders %}
+                                    {% if folder != selected_comment_folder %}
+                                    <option value="{{ folder }}">{{ folder }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-tiktok" onclick="return copySelectedComments(this.form, 'items[]')">
+                                <i data-lucide="move"></i> Mover
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="scrollable-content">
+                    <div class="accordion" id="commentsAccordion">
+                        {% for comment in comments %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" 
+                                        data-bs-toggle="collapse" data-bs-target="#comment{{ loop.index }}">
+                                    {{ comment[:50] }}{% if comment|length > 50 %}...{% endif %}
+                                </button>
+                            </h2>
+                            <div id="comment{{ loop.index }}" class="accordion-collapse collapse" 
+                                 data-bs-parent="#commentsAccordion">
+                                <div class="accordion-body">
+                                    <form action="{{ url_for('edit_comment') }}" method="post">
+                                        <input type="hidden" name="folder" value="{{ selected_comment_folder }}">
+                                        <input type="hidden" name="old_comment" value="{{ comment }}">
+                                        <div class="mb-3">
+                                            <label class="form-label">Comentário:</label>
+                                            <textarea class="form-control" name="new_comment" rows="3" 
+                                                      required>{{ comment }}</textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-tiktok">
+                                            <i data-lucide="save"></i> Salvar Alterações
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-muted">Nenhum comentário disponível nesta pasta.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="text-center mb-4">
+        <a href="{{ url_for('index') }}" class="btn btn-tiktok-secondary">
+            <i data-lucide="arrow-left"></i> Voltar
+        </a>
+    </div>
+</div>
+
+<script>
+function copySelectedProfiles(form, inputName) {
+    const checkboxes = document.querySelectorAll('.profile-checkbox:checked');
+    if (checkboxes.length === 0) {
+        alert('Por favor, selecione pelo menos um perfil.');
+        return false;
+    }
+    
+    checkboxes.forEach(checkbox => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = inputName;
+        input.value = checkbox.value;
+        form.appendChild(input);
+    });
+    
+    return confirm('Tem certeza que deseja realizar esta ação?');
+}
+
+function copySelectedComments(form, inputName) {
+    const checkboxes = document.querySelectorAll('.comment-checkbox:checked');
+    if (checkboxes.length === 0) {
+        alert('Por favor, selecione pelo menos um comentário.');
+        return false;
+    }
+    
+    checkboxes.forEach(checkbox => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = inputName;
+        input.value = checkbox.value;
+        form.appendChild(input);
+    });
+    
+    return confirm('Tem certeza que deseja realizar esta ação?');
+}
+
+document.getElementById('profileFolderSelect').addEventListener('change', function() {
+    window.location.href = '{{ url_for("edit_remove") }}?profile_folder=' + this.value + 
+                          '&comment_folder=' + document.getElementById('commentFolderSelect').value;
+});
+
+document.getElementById('commentFolderSelect').addEventListener('change', function() {
+    window.location.href = '{{ url_for("edit_remove") }}?profile_folder=' + 
+                          document.getElementById('profileFolderSelect').value + 
+                          '&comment_folder=' + this.value;
+});
+
+// Atualiza os ícones do Lucide após carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    lucide.createIcons();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,83 @@
+2024-11-28 14:04:42 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-28 14:05:45 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-28 14:05:45 - INFO - Processando comentário para perfil: Caio Pimentel
+2024-11-28 14:06:14 - INFO - Comentário enviado com sucesso para o perfil Caio Pimentel
+2024-11-28 14:06:14 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-28 14:06:16 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-28 14:07:07 - INFO - Nova instância do Chrome 0 iniciada para processar 2 comentários
+2024-11-28 14:07:07 - INFO - Processando comentário para perfil: Pedro Tavares
+2024-11-28 14:07:37 - WARNING - Caixa de comentário não encontrada para https://www.tiktok.com/@vivianeluana14/video/7416838342504992005
+2024-11-28 14:07:37 - INFO - Processando comentário para perfil: Caio Pimentel
+2024-11-28 14:08:04 - INFO - Comentário enviado com sucesso para o perfil Caio Pimentel
+2024-11-28 14:08:04 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-28 14:08:07 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-28 14:08:34 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-28 14:08:34 - INFO - Processando comentário para perfil: Pedro Tavares
+2024-11-28 14:08:52 - ERROR - Erro ao processar comentário para Pedro Tavares: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x002733E3+25059]
+	(No symbol) [0x001FCDE4]
+	(No symbol) [0x000DBEC3]
+	(No symbol) [0x000BD93B]
+	(No symbol) [0x0014800F]
+	(No symbol) [0x0015AE49]
+	(No symbol) [0x00141C96]
+	(No symbol) [0x00113FAC]
+	(No symbol) [0x00114F3D]
+	GetHandleVerifier [0x00565543+3113795]
+	GetHandleVerifier [0x0057A20A+3198986]
+	GetHandleVerifier [0x005729E2+3168226]
+	GetHandleVerifier [0x00313250+680016]
+	(No symbol) [0x0020572D]
+	(No symbol) [0x002029D8]
+	(No symbol) [0x00202B75]
+	(No symbol) [0x001F57D0]
+	BaseThreadInitThunk [0x75B87BA9+25]
+	RtlInitializeExceptionChain [0x7719C0CB+107]
+	RtlClearBits [0x7719C04F+191]
+	(No symbol) [0x00000000]
+
+2024-11-28 14:08:52 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-28 14:08:55 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-28 14:12:57 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-28 14:12:57 - INFO - Processando comentário para perfil: Mateus teixeira
+2024-11-28 14:13:41 - WARNING - Caixa de comentário não encontrada para https://www.tiktok.com/@vivianeluana14/video/7416838342504992005
+2024-11-28 14:13:41 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-28 14:13:43 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-28 14:13:57 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-28 14:13:57 - INFO - Processando comentário para perfil: Mateus teixeira
+2024-11-28 14:14:14 - ERROR - Erro ao processar comentário para Mateus teixeira: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x008133E3+25059]
+	(No symbol) [0x0079CDE4]
+	(No symbol) [0x0067BEC3]
+	(No symbol) [0x0065D93B]
+	(No symbol) [0x006E800F]
+	(No symbol) [0x006FAE49]
+	(No symbol) [0x006E1C96]
+	(No symbol) [0x006B3FAC]
+	(No symbol) [0x006B4F3D]
+	GetHandleVerifier [0x00B05543+3113795]
+	GetHandleVerifier [0x00B1A20A+3198986]
+	GetHandleVerifier [0x00B129E2+3168226]
+	GetHandleVerifier [0x008B3250+680016]
+	(No symbol) [0x007A572D]
+	(No symbol) [0x007A29D8]
+	(No symbol) [0x007A2B75]
+	(No symbol) [0x007957D0]
+	BaseThreadInitThunk [0x75B87BA9+25]
+	RtlInitializeExceptionChain [0x7719C0CB+107]
+	RtlClearBits [0x7719C04F+191]
+
+2024-11-28 14:14:14 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-28 14:14:16 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-28 14:20:28 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-28 14:20:28 - INFO - Processando comentário para perfil: Caio Pimentel
+2024-11-28 14:20:57 - WARNING - Caixa de comentário não encontrada para https://www.tiktok.com/@vivianeluana14/video/7416838342504992005
+2024-11-28 14:20:57 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-28 14:21:00 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-28 15:30:46 - INFO - Iniciando processo de encerramento do servidor

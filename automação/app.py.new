@@ -1,0 +1,780 @@
+# Importar todo o conteúdo do arquivo original
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import (
+    ElementClickInterceptedException,
+    TimeoutException,
+    WebDriverException,
+    NoSuchElementException,
+    StaleElementReferenceException
+)
+import json
+import os
+import signal
+import psutil
+import time
+import webbrowser
+import logging
+from threading import Thread, Lock
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import undetected_chromedriver as uc
+from license_manager import LicenseManager
+from datetime import datetime, timedelta
+from functools import wraps
+import socket
+import traceback
+import tempfile
+import shutil
+import requests
+
+# Configuração do Flask
+app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY', 'sua_chave_secreta_aqui')
+
+# URL da API do sistema de licenças
+API_URL = 'http://localhost:3000/api'
+
+# Função para registrar erros no servidor
+def registrar_erro(email, erro):
+    """Registra um erro da automação no servidor"""
+    try:
+        response = requests.post(
+            f'{API_URL}/erros-automacao',
+            json={'email': email, 'erro': erro},
+            timeout=10
+        )
+        if response.status_code == 201:
+            logger.info(f"Erro registrado para {email}: {erro}")
+        else:
+            logger.error(f"Falha ao registrar erro: {response.text}")
+    except Exception as e:
+        logger.error(f"Erro ao registrar erro no servidor: {e}")
+
+# Configuração do Logger
+def setup_logger():
+    log_dir = 'logs'
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+
+    logger = logging.getLogger('TikTokBot')
+    logger.setLevel(logging.DEBUG)
+
+    log_file = os.path.join(log_dir, f'tiktok_bot_{datetime.now().strftime("%Y%m%d")}.log')
+    file_handler = logging.FileHandler(log_file, encoding='utf-8')
+    file_handler.setLevel(logging.DEBUG)
+
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+
+    formatter = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    return logger
+
+logger = setup_logger()
+
+# Exceções personalizadas
+class TikTokError(Exception):
+    """Classe base para exceções do TikTok Bot"""
+    pass
+
+class CommentError(TikTokError):
+    """Erro ao tentar comentar em um vídeo"""
+    pass
+
+class ProfileError(TikTokError):
+    """Erro relacionado aos perfis"""
+    pass
+
+class CookieError(TikTokError):
+    """Erro no processamento de cookies"""
+    pass
+
+def init_license_manager():
+    """Inicializa o gerenciador de licenças"""
+    try:
+        license_manager = LicenseManager(api_url=API_URL)
+        logger.info(f"Sistema de licenças inicializado com API: CommentTikPro")
+        return license_manager
+    except Exception as e:
+        logger.error(f"Erro ao inicializar sistema de licenças: {e}")
+        return None
+
+# Inicializa o gerenciador de licenças globalmente
+license_manager = init_license_manager()
+
+# Middleware para verificar licença
+def require_license(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not license_manager:
+            flash('Sistema de licenças não disponível')
+            return redirect(url_for('login'))
+        
+        if 'user_email' not in session or 'password' not in session:
+            flash('Faça login para continuar')
+            return redirect(url_for('login'))
+        
+        try:
+            if license_manager.verify_license():
+                return f(*args, **kwargs)
+            else:
+                if hasattr(license_manager, 'last_response') and license_manager.last_response:
+                    try:
+                        response_data = license_manager.last_response.json()
+                        if 'erro' in response_data:
+                            flash(response_data['erro'])
+                    except:
+                        flash('Sua licença expirou ou está inválida')
+                else:
+                    flash('Sua licença expirou ou está inválida')
+                session.clear()
+                return redirect(url_for('login'))
+        except Exception as e:
+            logger.error(f"Erro ao verificar licença: {e}")
+            session.clear()
+            flash('Erro ao verificar licença')
+            return redirect(url_for('login'))
+            
+    return decorated_function
+
+# Lock para sincronização de threads
+comment_lock = Lock()
+
+def safe_load_json(file_path, default_value=None):
+    """Carrega arquivo JSON com tratamento de erros"""
+    try:
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as f:
+                return json.load(f)
+        return default_value if default_value is not None else []
+    except Exception as e:
+        logger.error(f"Erro ao carregar arquivo {file_path}: {e}")
+        return default_value if default_value is not None else []
+
+def safe_save_json(file_path, data):
+    """Salva arquivo JSON com tratamento de erros"""
+    try:
+        with open(file_path, 'w') as f:
+            json.dump(data, f)
+        return True
+    except Exception as e:
+        logger.error(f"Erro ao salvar arquivo {file_path}: {e}")
+        return False
+
+def load_profiles():
+    if os.path.exists('profiles.json'):
+        with open('profiles.json') as f:
+            return json.load(f)
+    return []
+
+def load_comments():
+    if os.path.exists('comments.json'):
+        with open('comments.json') as f:
+            return json.load(f)
+    return []
+
+class CookieHandler:
+    @staticmethod
+    def parse_netscape_format(cookie_string):
+        """Parse cookies no formato Netscape/Mozilla"""
+        try:
+            cookies = []
+            lines = cookie_string.strip().split('\n')
+            
+            for line in lines:
+                if line and not line.startswith('#'):
+                    try:
+                        fields = line.strip().split('\t')
+                        if len(fields) >= 7:
+                            cookie = {
+                                'name': fields[5],
+                                'value': fields[6],
+                                'domain': fields[0],
+                                'path': fields[2]
+                            }
+                            cookies.append(cookie)
+                    except Exception as e:
+                        logger.warning(f"Erro ao processar linha de cookie Netscape: {e}")
+            return cookies
+        except Exception as e:
+            logger.error(f"Erro ao processar cookies Netscape: {e}")
+            raise CookieError(f"Falha ao processar cookies Netscape: {str(e)}")
+
+    @staticmethod
+    def parse_string_format(cookie_string):
+        """Parse cookies no formato string"""
+        try:
+            cookies = []
+            pairs = cookie_string.split(';')
+            
+            for pair in pairs:
+                try:
+                    if '=' in pair:
+                        name, value = pair.split('=', 1)
+                        cookie = {
+                            'name': name.strip(),
+                            'value': value.strip(),
+                            'domain': '.tiktok.com',
+                            'path': '/'
+                        }
+                        cookies.append(cookie)
+                except Exception as e:
+                    logger.warning(f"Erro ao processar par de cookies: {e}")
+            return cookies
+        except Exception as e:
+            logger.error(f"Erro ao processar cookies string: {e}")
+            raise CookieError(f"Falha ao processar cookies string: {str(e)}")
+
+    @staticmethod
+    def parse_json_format(cookie_string):
+        """Parse cookies no formato JSON"""
+        try:
+            data = json.loads(cookie_string)
+            if isinstance(data, list):
+                return data
+            elif isinstance(data, dict):
+                return [data]
+        except Exception as e:
+            logger.error(f"Erro ao processar cookies JSON: {e}")
+            raise CookieError(f"Falha ao processar cookies JSON: {str(e)}")
+        return []
+
+    @staticmethod
+    def process_cookies(cookie_input):
+        """Processa cookies em diferentes formatos com tratamento de erros"""
+        try:
+            cookie_input = cookie_input.strip()
+            logger.debug("Iniciando processamento de cookies")
+            
+            if cookie_input.startswith('{') or cookie_input.startswith('['):
+                cookies = CookieHandler.parse_json_format(cookie_input)
+            elif '\t' in cookie_input:
+                cookies = CookieHandler.parse_netscape_format(cookie_input)
+            else:
+                cookies = CookieHandler.parse_string_format(cookie_input)
+                
+            if not cookies:
+                raise CookieError("Nenhum cookie válido encontrado")
+                
+            logger.info(f"Processados {len(cookies)} cookies com sucesso")
+            return cookies
+        except Exception as e:
+            logger.error(f"Erro no processamento de cookies: {e}")
+            raise CookieError(f"Falha no processamento de cookies: {str(e)}")
+
+def cleanup_temp_dir(temp_dir, instance_id, max_retries=3, delay=2):
+    """Função auxiliar para limpar diretório temporário com retentativas"""
+    for attempt in range(max_retries):
+        try:
+            # Aguarda um pouco para garantir que todos os processos foram encerrados
+            time.sleep(delay)
+            
+            if os.path.exists(temp_dir):
+                # Tenta remover arquivos individualmente primeiro
+                for root, dirs, files in os.walk(temp_dir, topdown=False):
+                    for name in files:
+                        try:
+                            file_path = os.path.join(root, name)
+                            os.chmod(file_path, 0o777)  # Garante permissões de escrita
+                            os.remove(file_path)
+                        except Exception as e:
+                            logger.warning(f"Não foi possível remover arquivo {name} na instância {instance_id}: {e}")
+                    
+                    for name in dirs:
+                        try:
+                            dir_path = os.path.join(root, name)
+                            os.chmod(dir_path, 0o777)  # Garante permissões de escrita
+                            os.rmdir(dir_path)
+                        except Exception as e:
+                            logger.warning(f"Não foi possível remover diretório {name} na instância {instance_id}: {e}")
+                
+                # Tenta remover o diretório principal
+                shutil.rmtree(temp_dir, ignore_errors=True)
+                
+                if not os.path.exists(temp_dir):
+                    logger.info(f"Diretório temporário da instância {instance_id} removido com sucesso na tentativa {attempt + 1}")
+                    return True
+            else:
+                logger.info(f"Diretório temporário da instância {instance_id} já não existe")
+                return True
+                
+        except Exception as e:
+            if attempt < max_retries - 1:
+                logger.warning(f"Tentativa {attempt + 1} de remover diretório temporário da instância {instance_id} falhou: {e}")
+                time.sleep(delay * (attempt + 1))  # Aumenta o delay a cada tentativa
+            else:
+                logger.error(f"Erro ao remover diretório temporário da instância {instance_id} após {max_retries} tentativas: {e}")
+    
+    return False
+
+def process_comment_batch(video_url, profile_comment_pairs, instance_id):
+    """Processa um lote de comentários em uma única instância do Chrome"""
+    driver = None
+    temp_dir = None
+    try:
+        # Cria um diretório temporário único para esta instância
+        temp_dir = tempfile.mkdtemp(prefix=f'chrome_instance_{instance_id}_')
+        
+        # Configura as opções do Chrome com o diretório temporário
+        options = uc.ChromeOptions()
+        options.add_argument(f'--user-data-dir={temp_dir}')
+        options.add_argument('--disable-background-networking')
+        options.add_argument('--disable-background-timer-throttling')
+        options.add_argument('--disable-backgrounding-occluded-windows')
+        
+        # Adiciona um pequeno delay baseado no ID da instância para evitar conflitos
+        time.sleep(instance_id * 2)
+        
+        driver = uc.Chrome(options=options)
+        logger.info(f"Nova instância do Chrome {instance_id} iniciada para processar {len(profile_comment_pairs)} comentários")
+
+        for profile_name, comment_text in profile_comment_pairs:
+            try:
+                with comment_lock:
+                    profiles = safe_load_json('profiles.json', [])
+                    profile_data = next((p for p in profiles if p['name'] == profile_name), None)
+                
+                if not profile_data:
+                    logger.warning(f"Perfil {profile_name} não encontrado")
+                    continue
+
+                logger.info(f"Processando comentário para perfil: {profile_name}")
+                
+                # Login
+                driver.get("https://www.tiktok.com/foryou")
+                time.sleep(3)
+
+                for cookie in profile_data['cookies']:
+                    try:
+                        driver.add_cookie({
+                            'name': cookie['name'],
+                            'value': cookie['value'],
+                            'domain': cookie.get('domain', '.tiktok.com'),
+                            'path': cookie.get('path', '/')
+                        })
+                    except Exception as e:
+                        erro = f"Erro ao adicionar cookie: {str(e)}"
+                        logger.error(f"{erro} para {profile_name}")
+                        registrar_erro(profile_data['email'], erro)
+                        continue
+
+                driver.get("https://www.tiktok.com/")
+                time.sleep(3)
+
+                # Navega para o vídeo
+                driver.get(video_url)
+                time.sleep(5)
+
+                # Tenta encontrar a caixa de comentário
+                try:
+                    comment_box = WebDriverWait(driver, 10).until(
+                        EC.presence_of_element_located((By.XPATH, "//div[@contenteditable='true' and @role='textbox']"))
+                    )
+                except TimeoutException:
+                    erro = f"Caixa de comentário não encontrada para {video_url}"
+                    logger.warning(erro)
+                    registrar_erro(profile_data['email'], erro)
+                    continue
+
+                comment_box.clear()
+                comment_box.send_keys(comment_text)
+
+                time.sleep(2)
+
+                try:
+                    publish_button = WebDriverWait(driver, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, "//div[@aria-label='Publicar' and @role='button']"))
+                    )
+                except TimeoutException:
+                    erro = "Botão de publicar não encontrado"
+                    logger.warning(erro)
+                    registrar_erro(profile_data['email'], erro)
+                    continue
+
+                driver.execute_script("arguments[0].scrollIntoView();", publish_button)
+
+                for _ in range(3):
+                    try:
+                        publish_button.click()
+                        time.sleep(3)
+                        break
+                    except ElementClickInterceptedException:
+                        logger.warning("Tentativa de clique falhou, tentando novamente...")
+                        time.sleep(2)
+                else:
+                    try:
+                        driver.execute_script("arguments[0].click();", publish_button)
+                    except Exception as e:
+                        erro = f"Falha ao clicar no botão de publicar: {str(e)}"
+                        logger.error(erro)
+                        registrar_erro(profile_data['email'], erro)
+                        continue
+
+                time.sleep(3)
+                logger.info(f"Comentário enviado com sucesso para o perfil {profile_name}")
+
+            except Exception as e:
+                erro = f"Erro ao processar comentário: {str(e)}\n{traceback.format_exc()}"
+                logger.error(f"{erro} para {profile_name}")
+                registrar_erro(profile_data['email'], erro)
+                continue
+
+    except Exception as e:
+        erro = f"Erro na instância do Chrome {instance_id}: {str(e)}\n{traceback.format_exc()}"
+        logger.error(erro)
+        if profile_data:
+            registrar_erro(profile_data['email'], erro)
+
+    finally:
+        if driver:
+            try:
+                # Fecha todas as janelas e encerra o processo
+                driver.quit()
+                logger.info(f"Instância do Chrome {instance_id} fechada com sucesso")
+            except Exception as e:
+                logger.error(f"Erro ao fechar instância do Chrome {instance_id}: {e}")
+        
+        # Tenta limpar o diretório temporário com retentativas
+        if temp_dir:
+            cleanup_temp_dir(temp_dir, instance_id)
+
+def divide_pairs_into_batches(pairs, num_batches):
+    """Divide os pares de perfil-comentário em lotes para processamento paralelo"""
+    batch_size = len(pairs) // num_batches
+    if batch_size == 0:
+        batch_size = 1
+    
+    batches = []
+    for i in range(0, len(pairs), batch_size):
+        batch = pairs[i:i + batch_size]
+        if batch:  # Só adiciona se o lote não estiver vazio
+            batches.append(batch)
+    
+    return batches
+
+@app.route('/')
+@require_license
+def index():
+    try:
+        profiles = safe_load_json('profiles.json', [])
+        comments = safe_load_json('comments.json', [])
+        return render_template('index.html', profiles=profiles, comments=comments)
+    except Exception as e:
+        logger.error(f"Erro ao carregar página inicial: {e}\n{traceback.format_exc()}")
+        flash('Erro ao carregar dados')
+        return render_template('index.html', profiles=[], comments=[])
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if not license_manager:
+        init_license_manager()
+        if not license_manager:
+            flash('Sistema de licenças não disponível')
+            return render_template('login.html')
+    
+    if 'user_email' in session and 'password' in session:
+        try:
+            if license_manager.verify_license():
+                return redirect(url_for('index'))
+        except Exception as e:
+            logger.error(f"Erro na verificação de licença durante login: {e}")
+            session.clear()
+        
+    if request.method == 'POST':
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+        
+        try:
+            if license_manager.login(email, senha):
+                session['user_email'] = email
+                session['password'] = senha
+                flash('Login realizado com sucesso!')
+                return redirect(url_for('index'))
+            else:
+                # Verifica se há uma resposta da última requisição
+                if hasattr(license_manager, 'last_response') and license_manager.last_response:
+                    try:
+                        response_data = license_manager.last_response.json()
+                        if 'erro' in response_data and 'licença já está em uso' in response_data['erro'].lower():
+                            ultimo_acesso = response_data.get('ultimoAcesso', 'desconhecido')
+                            return render_template('login.html', 
+                                                error=response_data['erro'],
+                                                ultimo_acesso=ultimo_acesso)
+                        else:
+                            flash(response_data.get('erro', 'Email ou senha inválidos'))
+                    except ValueError:
+                        flash('Email ou senha inválidos')
+                else:
+                    flash('Email ou senha inválidos')
+        except Exception as e:
+            logger.error(f"Erro durante login: {e}")
+            flash('Erro ao realizar login')
+            
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    try:
+        if license_manager:
+            license_manager.logout()
+            logger.info("Máquina liberada e usuário realizou logout com sucesso")
+        session.clear()
+        return redirect(url_for('login'))
+    except Exception as e:
+        logger.error(f"Erro durante logout: {e}")
+        return redirect(url_for('login'))
+
+@app.route('/add_profile', methods=['POST'])
+@require_license
+def add_profile():
+    try:
+        name = request.form['name']
+        cookies_raw = request.form['cookies'].strip()
+        
+        if not name or not cookies_raw:
+            raise ValueError("Nome do perfil e cookies são obrigatórios")
+        
+        processed_cookies = CookieHandler.process_cookies(cookies_raw)
+        
+        if not processed_cookies:
+            raise CookieError("Nenhum cookie válido encontrado")
+        
+        profiles = safe_load_json('profiles.json', [])
+        
+        # Verifica se já existe um perfil com o mesmo nome
+        if any(p['name'] == name for p in profiles):
+            raise ProfileError("Já existe um perfil com este nome")
+            
+        profiles.append({'name': name, 'cookies': processed_cookies})
+        
+        if safe_save_json('profiles.json', profiles):
+            logger.info(f"Perfil '{name}' adicionado com sucesso")
+            flash('Perfil adicionado com sucesso!')
+        else:
+            raise ProfileError("Erro ao salvar o perfil")
+            
+    except (ValueError, CookieError, ProfileError) as e:
+        logger.warning(f"Erro ao adicionar perfil: {str(e)}")
+        flash(f'Erro: {str(e)}')
+    except Exception as e:
+        logger.error(f"Erro inesperado ao adicionar perfil: {e}\n{traceback.format_exc()}")
+        flash('Erro inesperado ao adicionar perfil')
+        
+    return redirect(url_for('index'))
+
+@app.route('/add_comment', methods=['POST'])
+@require_license
+def add_comment():
+    comment = request.form['comment'].strip()
+    
+    if any(ord(char) > 10000 for char in comment):
+        flash('Não é possível adicionar emojis nos comentários!')
+        return redirect(url_for('index'))
+    
+    comments = load_comments()
+    comments.append(comment)
+
+    with open('comments.json', 'w') as f:
+        json.dump(comments, f)
+
+    flash('Comentário adicionado com sucesso!')
+    return redirect(url_for('index'))
+
+@app.route('/comment', methods=['POST'])
+@require_license
+def comment():
+    try:
+        video_url = request.form['video_url']
+        selected_comments = request.form.getlist('comments')
+        selected_profiles = request.form.getlist('profiles')
+        num_instances = int(request.form.get('num_instances', 1))
+
+        if len(selected_comments) != len(selected_profiles):
+            raise ValueError('O número de comentários deve ser igual ao número de perfis selecionados.')
+
+        # Cria pares de perfil-comentário
+        profile_comment_pairs = list(zip(selected_profiles, selected_comments))
+        
+        # Divide os pares em lotes baseado no número de instâncias
+        batches = divide_pairs_into_batches(profile_comment_pairs, num_instances)
+        
+        # Processa os lotes em paralelo
+        with ThreadPoolExecutor(max_workers=num_instances) as executor:
+            futures = []
+            for i, batch in enumerate(batches):
+                future = executor.submit(process_comment_batch, video_url, batch, i)
+                futures.append(future)
+            
+            # Aguarda todos os lotes terminarem
+            for future in as_completed(futures):
+                try:
+                    future.result()  # Obtém o resultado ou exceção
+                except Exception as e:
+                    logger.error(f"Erro em um dos lotes de comentários: {e}")
+
+        flash('Comentários enviados com sucesso!')
+        
+    except ValueError as e:
+        flash(f'Erro: {str(e)}')
+        logger.error(f"Erro de validação: {e}")
+    except Exception as e:
+        flash('Erro ao processar comentários')
+        logger.error(f"Erro no processo de comentários: {e}\n{traceback.format_exc()}")
+
+    return redirect(url_for('index'))
+
+@app.route('/edit_remove')
+@require_license
+def edit_remove():
+    try:
+        profiles = safe_load_json('profiles.json', [])
+        comments = safe_load_json('comments.json', [])
+        return render_template('edit_remove.html', profiles=profiles, comments=comments)
+    except Exception as e:
+        logger.error(f"Erro ao carregar página de edição: {e}\n{traceback.format_exc()}")
+        flash('Erro ao carregar dados')
+        return render_template('edit_remove.html', profiles=[], comments=[])
+
+@app.route('/remove', methods=['POST'])
+@require_license
+def remove():
+    try:
+        selected_comments = request.form.getlist('remove_comments')
+        selected_profiles = request.form.getlist('remove_profiles')
+
+        if not selected_comments and not selected_profiles:
+            flash('Nenhum item selecionado para remoção')
+            return redirect(url_for('edit_remove'))
+
+        # Remove comentários
+        if selected_comments:
+            comments = safe_load_json('comments.json', [])
+            comments = [c for c in comments if c not in selected_comments]
+            if not safe_save_json('comments.json', comments):
+                raise Exception("Erro ao salvar comentários atualizados")
+            logger.info(f"Removidos {len(selected_comments)} comentários")
+
+        # Remove perfis
+        if selected_profiles:
+            profiles = safe_load_json('profiles.json', [])
+            profiles = [p for p in profiles if p['name'] not in selected_profiles]
+            if not safe_save_json('profiles.json', profiles):
+                raise Exception("Erro ao salvar perfis atualizados")
+            logger.info(f"Removidos {len(selected_profiles)} perfis")
+
+        flash('Itens removidos com sucesso!')
+        
+    except Exception as e:
+        logger.error(f"Erro ao remover itens: {e}\n{traceback.format_exc()}")
+        flash('Erro ao remover itens')
+        
+    return redirect(url_for('edit_remove'))
+
+@app.route('/edit_profile', methods=['POST'])
+@require_license
+def edit_profile():
+    try:
+        old_name = request.form['old_name']
+        new_name = request.form['new_name']
+        new_cookies_raw = request.form['new_cookies'].strip()
+        
+        if not new_name or not new_cookies_raw:
+            raise ValueError("Nome do perfil e cookies são obrigatórios")
+        
+        # Processa os novos cookies
+        processed_cookies = CookieHandler.process_cookies(new_cookies_raw)
+        
+        if not processed_cookies:
+            raise CookieError("Nenhum cookie válido encontrado")
+
+        profiles = safe_load_json('profiles.json', [])
+        
+        # Verifica se o novo nome já existe (exceto se for o mesmo perfil)
+        if new_name != old_name and any(p['name'] == new_name for p in profiles):
+            raise ProfileError("Já existe um perfil com este nome")
+
+        # Atualiza o perfil
+        profile_updated = False
+        for profile in profiles:
+            if profile['name'] == old_name:
+                profile['name'] = new_name
+                profile['cookies'] = processed_cookies
+                profile_updated = True
+                break
+
+        if not profile_updated:
+            raise ProfileError("Perfil não encontrado")
+
+        if not safe_save_json('profiles.json', profiles):
+            raise Exception("Erro ao salvar alterações do perfil")
+
+        logger.info(f"Perfil '{old_name}' editado com sucesso para '{new_name}'")
+        flash('Perfil editado com sucesso!')
+        
+    except (ValueError, CookieError, ProfileError) as e:
+        logger.warning(f"Erro ao editar perfil: {str(e)}")
+        flash(f'Erro: {str(e)}')
+    except Exception as e:
+        logger.error(f"Erro inesperado ao editar perfil: {e}\n{traceback.format_exc()}")
+        flash('Erro inesperado ao editar perfil')
+    
+    return redirect(url_for('edit_remove'))
+
+@app.route('/edit_comment', methods=['POST'])
+@require_license
+def edit_comment():
+    try:
+        old_comment = request.form['old_comment']
+        new_comment = request.form['new_comment'].strip()
+
+        if not new_comment:
+            raise ValueError("O comentário não pode estar vazio")
+
+        if any(ord(char) > 10000 for char in new_comment):
+            raise ValueError('Não é possível adicionar emojis nos comentários')
+
+        comments = safe_load_json('comments.json', [])
+        
+        # Procura e atualiza o comentário
+        comment_updated = False
+        for i, comment in enumerate(comments):
+            if comment == old_comment:
+                comments[i] = new_comment
+                comment_updated = True
+                break
+
+        if not comment_updated:
+            raise ValueError("Comentário original não encontrado")
+
+        if not safe_save_json('comments.json', comments):
+            raise Exception("Erro ao salvar alterações do comentário")
+
+        logger.info(f"Comentário editado com sucesso: '{old_comment}' -> '{new_comment}'")
+        flash('Comentário editado com sucesso!')
+        
+    except ValueError as e:
+        logger.warning(f"Erro ao editar comentário: {str(e)}")
+        flash(f'Erro: {str(e)}')
+    except Exception as e:
+        logger.error(f"Erro inesperado ao editar comentário: {e}\n{traceback.format_exc()}")
+        flash('Erro inesperado ao editar comentário')
+        
+    return redirect(url_for('edit_remove'))
+
+@app.route('/shutdown', methods=['POST'])
+def shutdown():
+    try:
+        logger.info("Iniciando processo de encerramento do servidor")
+        
+        # Realiza logout antes de encerrar
+        if license_manager:

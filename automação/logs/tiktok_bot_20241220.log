@@ -1,0 +1,114 @@
+2024-12-20 02:06:47 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 02:07:04 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 02:12:38 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 02:12:38 - INFO - Máquina liberada com sucesso
+2024-12-20 02:12:38 - ERROR - Erro durante encerramento: name 'scheduler' is not defined
+2024-12-20 02:13:15 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 02:13:16 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 02:13:37 - ERROR - Erro ao carregar página inicial: Could not build url for endpoint 'shutdown'. Did you mean 'add_comment' instead?
+Traceback (most recent call last):
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\app.py", line 549, in index
+    return render_template('index.html',
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\templates\base.html", line 54, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\templates\index.html", line 210, in block 'content'
+    <form action="{{ url_for('shutdown') }}" method="post" class="d-inline">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'shutdown'. Did you mean 'add_comment' instead?
+
+2024-12-20 02:13:37 - ERROR - Erro ao verificar licença: Could not build url for endpoint 'shutdown'. Did you mean 'add_comment' instead?
+2024-12-20 02:14:02 - ERROR - Erro ao carregar página inicial: Could not build url for endpoint 'shutdown'. Did you mean 'add_comment' instead?
+Traceback (most recent call last):
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\app.py", line 549, in index
+    return render_template('index.html',
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\jinja2\environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\templates\base.html", line 54, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\Desktop\sistema comentarios atualizar\versão com servidor desatualizado\automação\templates\index.html", line 210, in block 'content'
+    <form action="{{ url_for('shutdown') }}" method="post" class="d-inline">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\werkzeug\routing\map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'shutdown'. Did you mean 'add_comment' instead?
+
+2024-12-20 02:14:02 - ERROR - Erro ao verificar licença: Could not build url for endpoint 'shutdown'. Did you mean 'add_comment' instead?
+2024-12-20 02:19:54 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 02:26:03 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 02:26:46 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 02:27:40 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 02:32:57 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:02:53 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:02:54 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:05:10 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 13:05:10 - INFO - Máquina liberada com sucesso
+2024-12-20 13:05:10 - ERROR - Erro durante encerramento: name 'scheduler' is not defined
+2024-12-20 13:05:31 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:05:32 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:19:52 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 13:20:24 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 13:26:23 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:29:54 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 13:39:36 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:48:41 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 13:59:50 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 14:29:02 - INFO - Máquina liberada e usuário realizou logout com sucesso
+2024-12-20 14:29:02 - INFO - Máquina liberada com sucesso
+2024-12-20 14:29:03 - ERROR - Erro durante encerramento: Working outside of request context.
+
+This typically means that you attempted to use functionality that needed
+an active HTTP request. Consult the documentation on testing for
+information about how to avoid this problem.
+2024-12-20 14:36:02 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 14:36:03 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 14:44:19 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 14:45:45 - INFO - Iniciando processo de encerramento do servidor
+2024-12-20 18:46:52 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 18:46:53 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 18:49:10 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 18:51:15 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 18:54:32 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 18:55:07 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 18:56:11 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 19:02:45 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-12-20 20:55:10 - INFO - Sistema de licenças inicializado com API: CommentTikPro

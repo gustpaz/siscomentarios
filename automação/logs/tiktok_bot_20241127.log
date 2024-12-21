@@ -1,0 +1,886 @@
+2024-11-27 12:52:17 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-27 13:01:53 - INFO - Iniciando processo de encerramento do servidor
+2024-11-27 13:02:02 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-27 13:02:18 - INFO - Nova instância do Chrome 0 iniciada para processar 1 comentários
+2024-11-27 13:02:18 - INFO - Processando comentário para perfil: barbara lima
+2024-11-27 13:02:44 - INFO - Comentário enviado com sucesso para o perfil barbara lima
+2024-11-27 13:02:44 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-27 13:02:46 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-27 13:03:09 - INFO - Nova instância do Chrome 0 iniciada para processar 2 comentários
+2024-11-27 13:03:09 - INFO - Processando comentário para perfil: Carlos andrade
+2024-11-27 13:03:30 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 13:03:33 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 13:03:36 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 13:03:41 - INFO - Comentário enviado com sucesso para o perfil Carlos andrade
+2024-11-27 13:03:41 - INFO - Processando comentário para perfil: luana paz
+2024-11-27 13:04:07 - INFO - Comentário enviado com sucesso para o perfil luana paz
+2024-11-27 13:04:07 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-27 13:04:09 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-27 14:30:13 - INFO - Nova instância do Chrome 0 iniciada para processar 30 comentários
+2024-11-27 14:30:13 - INFO - Processando comentário para perfil: jose carlos
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para jose carlos: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: Joo pedro
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para Joo pedro: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: Carlos andrade
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para Carlos andrade: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: karlos augusto
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para karlos augusto: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: manu lima
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para manu lima: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: manuela brenda
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para manuela brenda: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: barbara lima
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para barbara lima: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: luana paz
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para luana paz: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: karla brito
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para karla brito: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: leticia luana
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para leticia luana: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: juliana paz
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para juliana paz: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: laura manu
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para laura manu: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: daiana luna
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para daiana luna: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: leticia juliana
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para leticia juliana: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: natalia guedes
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para natalia guedes: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: karla marina
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para karla marina: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: juliana abreu
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para juliana abreu: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: brenda lais
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para brenda lais: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: manu silva
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para manu silva: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: Juana bela
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para Juana bela: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: nanda ferreira
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para nanda ferreira: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: joana bras
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para joana bras: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: luana Brito
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para luana Brito: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: babi arla
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para babi arla: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: Gabi Almeida
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para Gabi Almeida: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: nanda lima
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para nanda lima: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: fatima brenda
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para fatima brenda: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: luan pedro
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para luan pedro: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: Luana silva
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para Luana silva: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Processando comentário para perfil: manuela gabi
+2024-11-27 14:30:30 - ERROR - Erro ao processar comentário para manuela gabi: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x007D33E3+25059]
+	(No symbol) [0x0075CDE4]
+	(No symbol) [0x0063BEC3]
+	(No symbol) [0x0061D93B]
+	(No symbol) [0x006A800F]
+	(No symbol) [0x006BAE49]
+	(No symbol) [0x006A1C96]
+	(No symbol) [0x00673FAC]
+	(No symbol) [0x00674F3D]
+	GetHandleVerifier [0x00AC5543+3113795]
+	GetHandleVerifier [0x00ADA20A+3198986]
+	GetHandleVerifier [0x00AD29E2+3168226]
+	GetHandleVerifier [0x00873250+680016]
+	(No symbol) [0x0076572D]
+	(No symbol) [0x007629D8]
+	(No symbol) [0x00762B75]
+	(No symbol) [0x007557D0]
+	BaseThreadInitThunk [0x765C7BA9+25]
+	RtlInitializeExceptionChain [0x778EC0CB+107]
+	RtlClearBits [0x778EC04F+191]
+
+2024-11-27 14:30:30 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-27 14:30:32 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1
+2024-11-27 14:41:50 - INFO - Nova instância do Chrome 0 iniciada para processar 6 comentários
+2024-11-27 14:41:50 - INFO - Processando comentário para perfil: jose carlos
+2024-11-27 14:41:52 - INFO - Nova instância do Chrome 1 iniciada para processar 6 comentários
+2024-11-27 14:41:52 - INFO - Processando comentário para perfil: barbara lima
+2024-11-27 14:41:56 - INFO - Nova instância do Chrome 3 iniciada para processar 6 comentários
+2024-11-27 14:41:56 - INFO - Processando comentário para perfil: manu silva
+2024-11-27 14:41:58 - INFO - Nova instância do Chrome 4 iniciada para processar 6 comentários
+2024-11-27 14:41:58 - INFO - Processando comentário para perfil: Gabi Almeida
+2024-11-27 14:42:11 - INFO - Nova instância do Chrome 2 iniciada para processar 6 comentários
+2024-11-27 14:42:11 - INFO - Processando comentário para perfil: daiana luna
+2024-11-27 14:42:46 - INFO - Comentário enviado com sucesso para o perfil barbara lima
+2024-11-27 14:42:47 - INFO - Processando comentário para perfil: luana paz
+2024-11-27 14:42:48 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:42:49 - INFO - Comentário enviado com sucesso para o perfil Gabi Almeida
+2024-11-27 14:42:49 - INFO - Processando comentário para perfil: nanda lima
+2024-11-27 14:42:57 - INFO - Comentário enviado com sucesso para o perfil manu silva
+2024-11-27 14:42:57 - INFO - Processando comentário para perfil: Juana bela
+2024-11-27 14:43:20 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:43:24 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:43:26 - INFO - Comentário enviado com sucesso para o perfil luana paz
+2024-11-27 14:43:26 - INFO - Processando comentário para perfil: karla brito
+2024-11-27 14:43:27 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:43:30 - INFO - Comentário enviado com sucesso para o perfil nanda lima
+2024-11-27 14:43:30 - INFO - Processando comentário para perfil: fatima brenda
+2024-11-27 14:43:32 - INFO - Comentário enviado com sucesso para o perfil daiana luna
+2024-11-27 14:43:32 - INFO - Processando comentário para perfil: leticia juliana
+2024-11-27 14:43:50 - INFO - Comentário enviado com sucesso para o perfil Juana bela
+2024-11-27 14:43:51 - INFO - Processando comentário para perfil: nanda ferreira
+2024-11-27 14:44:16 - INFO - Comentário enviado com sucesso para o perfil fatima brenda
+2024-11-27 14:44:16 - INFO - Processando comentário para perfil: luan pedro
+2024-11-27 14:44:17 - INFO - Comentário enviado com sucesso para o perfil leticia juliana
+2024-11-27 14:44:17 - INFO - Processando comentário para perfil: natalia guedes
+2024-11-27 14:44:18 - INFO - Comentário enviado com sucesso para o perfil karla brito
+2024-11-27 14:44:18 - INFO - Processando comentário para perfil: leticia luana
+2024-11-27 14:44:40 - INFO - Comentário enviado com sucesso para o perfil nanda ferreira
+2024-11-27 14:44:40 - INFO - Processando comentário para perfil: joana bras
+2024-11-27 14:45:02 - INFO - Comentário enviado com sucesso para o perfil leticia luana
+2024-11-27 14:45:02 - INFO - Processando comentário para perfil: juliana paz
+2024-11-27 14:45:03 - INFO - Comentário enviado com sucesso para o perfil luan pedro
+2024-11-27 14:45:03 - INFO - Processando comentário para perfil: Luana silva
+2024-11-27 14:45:05 - INFO - Comentário enviado com sucesso para o perfil natalia guedes
+2024-11-27 14:45:05 - INFO - Processando comentário para perfil: karla marina
+2024-11-27 14:45:27 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:45:31 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:45:38 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:45:43 - INFO - Comentário enviado com sucesso para o perfil joana bras
+2024-11-27 14:45:43 - INFO - Processando comentário para perfil: luana Brito
+2024-11-27 14:45:50 - INFO - Comentário enviado com sucesso para o perfil Luana silva
+2024-11-27 14:45:50 - INFO - Processando comentário para perfil: manuela gabi
+2024-11-27 14:45:51 - INFO - Comentário enviado com sucesso para o perfil karla marina
+2024-11-27 14:45:51 - INFO - Processando comentário para perfil: juliana abreu
+2024-11-27 14:45:51 - INFO - Comentário enviado com sucesso para o perfil juliana paz
+2024-11-27 14:45:51 - INFO - Processando comentário para perfil: laura manu
+2024-11-27 14:46:34 - INFO - Comentário enviado com sucesso para o perfil manuela gabi
+2024-11-27 14:46:34 - INFO - Instância do Chrome 4 fechada com sucesso
+2024-11-27 14:46:35 - INFO - Comentário enviado com sucesso para o perfil laura manu
+2024-11-27 14:46:35 - INFO - Instância do Chrome 1 fechada com sucesso
+2024-11-27 14:46:35 - INFO - Comentário enviado com sucesso para o perfil juliana abreu
+2024-11-27 14:46:35 - INFO - Processando comentário para perfil: brenda lais
+2024-11-27 14:46:36 - INFO - Comentário enviado com sucesso para o perfil luana Brito
+2024-11-27 14:46:36 - INFO - Processando comentário para perfil: babi arla
+2024-11-27 14:46:38 - INFO - Diretório temporário da instância 4 removido com sucesso na tentativa 1
+2024-11-27 14:46:38 - INFO - Diretório temporário da instância 1 removido com sucesso na tentativa 1
+2024-11-27 14:47:04 - INFO - Comentário enviado com sucesso para o perfil brenda lais
+2024-11-27 14:47:04 - INFO - Instância do Chrome 2 fechada com sucesso
+2024-11-27 14:47:06 - INFO - Diretório temporário da instância 2 removido com sucesso na tentativa 1
+2024-11-27 14:47:13 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:47:16 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:47:16 - INFO - Comentário enviado com sucesso para o perfil babi arla
+2024-11-27 14:47:16 - INFO - Instância do Chrome 3 fechada com sucesso
+2024-11-27 14:47:19 - INFO - Diretório temporário da instância 3 removido com sucesso na tentativa 1
+2024-11-27 14:47:19 - WARNING - Tentativa de clique falhou, tentando novamente...
+2024-11-27 14:47:24 - INFO - Comentário enviado com sucesso para o perfil jose carlos
+2024-11-27 14:47:24 - INFO - Processando comentário para perfil: Joo pedro
+2024-11-27 14:47:49 - INFO - Comentário enviado com sucesso para o perfil Joo pedro
+2024-11-27 14:47:49 - INFO - Processando comentário para perfil: Carlos andrade
+2024-11-27 14:48:14 - INFO - Comentário enviado com sucesso para o perfil Carlos andrade
+2024-11-27 14:48:14 - INFO - Processando comentário para perfil: karlos augusto
+2024-11-27 14:48:38 - INFO - Comentário enviado com sucesso para o perfil karlos augusto
+2024-11-27 14:48:38 - INFO - Processando comentário para perfil: manu lima
+2024-11-27 14:49:04 - INFO - Comentário enviado com sucesso para o perfil manu lima
+2024-11-27 14:49:04 - INFO - Processando comentário para perfil: manuela brenda
+2024-11-27 14:49:29 - INFO - Comentário enviado com sucesso para o perfil manuela brenda
+2024-11-27 14:49:29 - INFO - Instância do Chrome 0 fechada com sucesso
+2024-11-27 14:49:32 - INFO - Diretório temporário da instância 0 removido com sucesso na tentativa 1

@@ -1,0 +1,130 @@
+2024-11-06 09:30:15 - INFO - Sistema de licenças inicializado com API: CommentTikPro
+2024-11-06 09:34:27 - DEBUG - Iniciando processamento de cookies
+2024-11-06 09:34:27 - INFO - Processados 22 cookies com sucesso
+2024-11-06 09:34:27 - INFO - Perfil 'manulima1020' adicionado com sucesso
+2024-11-06 09:34:59 - DEBUG - Iniciando processamento de cookies
+2024-11-06 09:34:59 - INFO - Processados 22 cookies com sucesso
+2024-11-06 09:34:59 - INFO - Perfil 'manuelabrenda1452' adicionado com sucesso
+2024-11-06 09:35:24 - DEBUG - Iniciando processamento de cookies
+2024-11-06 09:35:24 - INFO - Processados 22 cookies com sucesso
+2024-11-06 09:35:24 - INFO - Perfil 'barbaralima1020' adicionado com sucesso
+2024-11-06 09:35:49 - DEBUG - Iniciando processamento de cookies
+2024-11-06 09:35:49 - INFO - Processados 22 cookies com sucesso
+2024-11-06 09:35:49 - INFO - Perfil 'luanapaz788' adicionado com sucesso
+2024-11-06 09:39:34 - INFO - Navegador iniciado com sucesso
+2024-11-06 09:39:34 - INFO - Iniciando processo para perfil: manulima1020
+2024-11-06 09:40:03 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-06 09:40:29 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-06 09:40:56 - INFO - Iniciando processo para perfil: luanapaz788
+2024-11-06 09:41:21 - INFO - Navegador fechado com sucesso
+2024-11-06 09:44:58 - INFO - Navegador iniciado com sucesso
+2024-11-06 09:44:58 - INFO - Iniciando processo para perfil: manulima1020
+2024-11-06 09:45:30 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-06 09:45:59 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-06 09:46:25 - INFO - Iniciando processo para perfil: luanapaz788
+2024-11-06 09:46:53 - INFO - Navegador fechado com sucesso
+2024-11-06 09:47:55 - INFO - Navegador iniciado com sucesso
+2024-11-06 09:47:55 - INFO - Iniciando processo para perfil: manulima1020
+2024-11-06 09:48:24 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-06 09:48:51 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-06 09:49:17 - INFO - Iniciando processo para perfil: luanapaz788
+2024-11-06 09:49:43 - INFO - Navegador fechado com sucesso
+2024-11-06 09:50:10 - INFO - Navegador iniciado com sucesso
+2024-11-06 09:50:10 - INFO - Iniciando processo para perfil: manulima1020
+2024-11-06 09:50:41 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-06 09:51:06 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-06 09:51:31 - INFO - Iniciando processo para perfil: luanapaz788
+2024-11-06 09:51:57 - INFO - Navegador fechado com sucesso
+2024-11-06 10:03:27 - INFO - Navegador iniciado com sucesso
+2024-11-06 10:03:27 - INFO - Iniciando processo para perfil: manulima1020
+2024-11-06 10:08:33 - ERROR - Erro ao processar perfil manulima1020: Message: timeout: Timed out receiving message from renderer: -0.015
+  (Session info: chrome=130.0.6723.92)
+Stacktrace:
+	GetHandleVerifier [0x00BD3913+24035]
+	(No symbol) [0x00B5BCA4]
+	(No symbol) [0x00A3C2D3]
+	(No symbol) [0x00A2DCC5]
+	(No symbol) [0x00A2D9F8]
+	(No symbol) [0x00A2BE67]
+	(No symbol) [0x00A2C50D]
+	(No symbol) [0x00A3862A]
+	(No symbol) [0x00A47105]
+	(No symbol) [0x00A4B626]
+	(No symbol) [0x00A2CB3C]
+	(No symbol) [0x00A46FC2]
+	(No symbol) [0x00AB945E]
+	(No symbol) [0x00A9FC26]
+	(No symbol) [0x00A7218C]
+	(No symbol) [0x00A7310D]
+	GetHandleVerifier [0x00E79743+2800659]
+	GetHandleVerifier [0x00ED42FE+3172302]
+	GetHandleVerifier [0x00ECCF12+3142626]
+	GetHandleVerifier [0x00C76CC0+692624]
+	(No symbol) [0x00B64CBD]
+	(No symbol) [0x00B619C8]
+	(No symbol) [0x00B61B60]
+	(No symbol) [0x00B54010]
+	BaseThreadInitThunk [0x75867BA9+25]
+	RtlInitializeExceptionChain [0x7760C0CB+107]
+	RtlClearBits [0x7760C04F+191]
+
+Traceback (most recent call last):
+  File "C:\Users\ggpaz\Desktop\tiktok comentarios\comentens novo - 05.11 - sistema de login - funcional- layout novo - cookies - tratamentos de erros\app.py", line 376, in comment
+    driver.get("https://www.tiktok.com/")
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 363, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\ggpaz\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: timeout: Timed out receiving message from renderer: -0.015
+  (Session info: chrome=130.0.6723.92)
+Stacktrace:
+	GetHandleVerifier [0x00BD3913+24035]
+	(No symbol) [0x00B5BCA4]
+	(No symbol) [0x00A3C2D3]
+	(No symbol) [0x00A2DCC5]
+	(No symbol) [0x00A2D9F8]
+	(No symbol) [0x00A2BE67]
+	(No symbol) [0x00A2C50D]
+	(No symbol) [0x00A3862A]
+	(No symbol) [0x00A47105]
+	(No symbol) [0x00A4B626]
+	(No symbol) [0x00A2CB3C]
+	(No symbol) [0x00A46FC2]
+	(No symbol) [0x00AB945E]
+	(No symbol) [0x00A9FC26]
+	(No symbol) [0x00A7218C]
+	(No symbol) [0x00A7310D]
+	GetHandleVerifier [0x00E79743+2800659]
+	GetHandleVerifier [0x00ED42FE+3172302]
+	GetHandleVerifier [0x00ECCF12+3142626]
+	GetHandleVerifier [0x00C76CC0+692624]
+	(No symbol) [0x00B64CBD]
+	(No symbol) [0x00B619C8]
+	(No symbol) [0x00B61B60]
+	(No symbol) [0x00B54010]
+	BaseThreadInitThunk [0x75867BA9+25]
+	RtlInitializeExceptionChain [0x7760C0CB+107]
+	RtlClearBits [0x7760C04F+191]
+
+
+2024-11-06 10:08:33 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-06 10:09:01 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-06 10:09:29 - INFO - Iniciando processo para perfil: luanapaz788
+2024-11-06 10:09:56 - INFO - Navegador fechado com sucesso
+2024-11-06 10:10:37 - INFO - Navegador iniciado com sucesso
+2024-11-06 10:10:37 - INFO - Iniciando processo para perfil: manulima1020
+2024-11-06 10:11:06 - INFO - Iniciando processo para perfil: manuelabrenda1452
+2024-11-06 10:11:32 - INFO - Iniciando processo para perfil: barbaralima1020
+2024-11-06 10:11:59 - INFO - Iniciando processo para perfil: luanapaz788
+2024-11-06 10:12:25 - INFO - Navegador fechado com sucesso
+2024-11-07 16:41:15 - DEBUG - Iniciando processamento de cookies
+2024-11-07 16:41:15 - INFO - Processados 22 cookies com sucesso
+2024-11-07 16:41:15 - INFO - Perfil 'CommentTikPro' adicionado com sucesso
+2024-11-07 16:43:04 - INFO - Navegador iniciado com sucesso
+2024-11-07 16:43:04 - INFO - Iniciando processo para perfil: CommentTikPro
+2024-11-07 16:43:35 - INFO - Navegador fechado com sucesso

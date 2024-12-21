@@ -1,0 +1,224 @@
+/* Variáveis do TikTok */
+:root {
+    --tiktok-primary: #fe2c55;
+    --tiktok-secondary: #161823;
+    --tiktok-bg: #f8f9fa;
+    --tiktok-border: #e6e6e6;
+}
+
+/* Container principal */
+.edit-remove-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cards e Seções */
+.section-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.section-header {
+    background: var(--tiktok-bg);
+    border-bottom: 1px solid var(--tiktok-border);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-header h5 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--tiktok-secondary);
+}
+
+.section-body {
+    padding: 20px;
+}
+
+/* Área com Scroll */
+.scrollable-content {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--tiktok-border);
+    border-radius: 8px;
+    background: var(--tiktok-bg);
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+/* Estilização da Barra de Rolagem */
+.scrollable-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Grid de Items */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.item-box {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--tiktok-border);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.item-box:hover {
+    background: #f0f2f5;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.item-box input[type="checkbox"] {
+    margin-right: 12px;
+}
+
+/* Barra de Ações */
+.actions-bar {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+/* Accordion */
+.accordion-item {
+    border: 1px solid var(--tiktok-border);
+    margin-bottom: 8px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.accordion-button {
+    background-color: white;
+    color: var(--tiktok-secondary);
+    font-weight: 500;
+    padding: 12px 16px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--tiktok-bg);
+    color: var(--tiktok-primary);
+}
+
+.accordion-body {
+    background-color: var(--tiktok-bg);
+    padding: 16px;
+}
+
+/* Botões */
+.btn-tiktok {
+    background-color: var(--tiktok-primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-tiktok:hover {
+    background-color: #e62a4d;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-tiktok-secondary {
+    background-color: white;
+    color: var(--tiktok-secondary);
+    border: 1px solid var(--tiktok-border);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-tiktok-secondary:hover {
+    background-color: #f0f2f5;
+    border-color: #d1d1d1;
+    transform: translateY(-1px);
+}
+
+/* Formulários */
+.form-select {
+    border: 1px solid var(--tiktok-border);
+    border-radius: 4px;
+    padding: 8px 12px;
+    background-color: white;
+}
+
+.form-select:focus {
+    border-color: var(--tiktok-primary);
+    box-shadow: 0 0 0 2px rgba(254, 44, 85, 0.1);
+}
+
+.form-control {
+    border: 1px solid var(--tiktok-border);
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--tiktok-primary);
+    box-shadow: 0 0 0 2px rgba(254, 44, 85, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .edit-remove-container {
+        padding: 10px;
+    }
+    
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .actions-bar {
+        flex-direction: column;
+    }
+    
+    .actions-bar > * {
+        width: 100%;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .section-header select {
+        width: 100%;
+    }
+}
